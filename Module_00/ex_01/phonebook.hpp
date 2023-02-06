@@ -4,15 +4,20 @@
 # include "contact.hpp"
 
 class Phonebook {
-	private:
-		int		_count;
-		Contact	_contacts[8];
+private:
+	int			_count;
+	Contact		_contacts[8];
+	std::string	_fixString( std::string );
+	void		_getAllContacts( void );
+		void		_moveContactDown( void );
+		void		_setNewContact( void );
+		void 		_incCount( void );
 
 	public:
-		Phonebook( void );
-		~Phonebook( void );
-		void add_contact( void );
-		void search_contact( void );
+					Phonebook( void );
+					~Phonebook( void );
+		void	 	addContact( void );
+		void		searchContact( void );
 };
 
 #endif

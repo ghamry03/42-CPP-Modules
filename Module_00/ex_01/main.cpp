@@ -5,12 +5,13 @@ int	main(void) {
 	std::string	input;
 	Phonebook	phonebook;
 
-	while (input.compare("END")) {
-		std::cin >> input;
+	while (input.compare("EXIT")) {
+		std::cout << "Enter a command: "; 
+		std::getline(std::cin, input);
 		if (!input.compare("ADD"))
-			phonebook.add_contact();
+			phonebook.addContact();
 		else if (!input.compare("SEARCH"))
-			phonebook.search_contact();
+			phonebook.searchContact();
 		else
 			std::cout << "unvalid cmd, try using ADD - SEARCH - EXIT" << std::endl;
 	}

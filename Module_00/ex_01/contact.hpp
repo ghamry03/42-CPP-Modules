@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string.h>
+# include <limits>
 
 class Contact {
 	private: 
@@ -15,16 +16,17 @@ class Contact {
 	public:
 		Contact( void );
 		~Contact( void );
-		void		set_firstName( std::string name );
-		void		set_lastName( std::string name );
-		void		set_nickname( std::string name );
-		void		set_phoneNumber (std::string number );
-		void		set_secret( std::string secret );
-		std::string	get_firstName( void ) const;
-		std::string get_lastName( void ) const;
-		std::string get_nickname( void ) const;
-		std::string get_phoneNumber( void ) const;
-		std::string get_secret( void ) const;
+		void		setFirstName( std::string name );
+		void		setLastName( std::string name );
+		void		setNickname( std::string name );
+		void		setPhoneNumber (std::string number );
+		void		setSecret( std::string secret );
+		std::string	getFirstName( void ) const;
+		std::string getLastName( void ) const;
+		std::string getNickname( void ) const;
+		std::string getPhoneNumber( void ) const;
+		std::string getSecret( void ) const;
+		void		getContactInfo( void ) const;
 };
 
 #endif
