@@ -2,7 +2,7 @@
 
 Phonebook::Phonebook  ( void ) {
 	this->_count = 0;
-	std::cout << "Welcome to phonebook" << std::endl;
+	std::cout << "Welcome to Phonebook" << std::endl;
 	return ;
 }
 
@@ -23,6 +23,19 @@ std::string	Phonebook::_fixString( std::string str ) {
 		str.insert(0, 10 - len, ' ');
 	}
 	return (str);
+}
+
+std::string	Phonebook::_getUserInput( void ) {
+	std::string		input;
+
+	while (std::getline( std::cin, input )) {
+		if (input.length() != 0)
+			break ;
+		else {
+			std::cout << "Input can't be empty: ";
+		}
+	}
+	return (input);
 }
 
 void	Phonebook::_getAllContacts( void ) {
@@ -47,21 +60,23 @@ void	Phonebook::_moveContactDown( void ) {
 void	Phonebook::_setNewContact( void ) {
 	std::string		input;
 
-	std::cout << "First Name: "; 
-	std::getline(std::cin, input);
+	std::cout << std::endl << "\tADDING TO PHONEBOOK" << std::endl;
+	std::cout << "First Name: ";
+	input = this->_getUserInput();
 	this->_contacts[0].setFirstName(input);
 	std::cout << "Last Name: ";
-	std::getline(std::cin, input);
+	input = this->_getUserInput();
 	this->_contacts[0].setLastName(input);
 	std::cout << "Nickname: ";
-	std::getline(std::cin, input);
+	input = this->_getUserInput();
 	this->_contacts[0].setNickname(input);
 	std::cout << "Phone number: ";
-	std::getline(std::cin, input);
+	input = this->_getUserInput();
 	this->_contacts[0].setPhoneNumber(input);
 	std::cout << "Darkest Secret: ";
-	std::getline(std::cin, input);
+	input = this->_getUserInput();
 	this->_contacts[0].setSecret(input);
+	std::cout << std::endl;
 }
 
 void	Phonebook::_incCount( void ) {
@@ -80,20 +95,21 @@ void	Phonebook::addContact( void ) {
 void	Phonebook::searchContact( void ) {
 	int		input;
 
+	std::cout << std::endl << "\t\tSEARCHING PHONEBOOK" << std::endl;
 	if (_count == 0)
 		std::cout << "Phonebook doesn't have any contacts" << std::endl;
 	else {
 		_getAllContacts();
 		std::cout << "Enter contact index: ";
 		std::cin >> input;
-		std::cout << std::endl;
-		std::cin.ignore ( std::numeric_limits<std::streamsize>::max(), '\n' ); 
 		if (std::cin.fail() || input > this->_count - 1 || input < 0) {
 			std::cin.clear();
-			std::cout << "Invalidfindex" << std::endl;
+			std::cout << "Invalid index" << std::endl;
 		} else {
 			this->_contacts[input].getContactInfo();
 		}
+		std::cin.ignore ( std::numeric_limits<std::streamsize>::max(), '\n' );
 	}
+	std::cout << std::endl;
 	return ;
 }
