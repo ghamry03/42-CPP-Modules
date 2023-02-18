@@ -1,6 +1,7 @@
-NAME		=	BetterThanSed
+NAME		=	notSed
 
 SRCS		=	main.cpp		\
+				NotSed.cpp		\
 
 OBJS		=	$(SRCS:.cpp=.o)
 
