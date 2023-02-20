@@ -32,12 +32,15 @@ int		NotSed::openInFile( void ) {
 }
 
 void	NotSed::readInFile( void ) {
-	char		c;
+	std::string		line;
 
 	if ( _isError )
 		return ;
-	while (_inFile.get(c))
-		_inFileText += c;
+	while ( std::getline( _inFile, line ) ) {
+		_inFileText.append(line);
+		if ( !_inFile.eof() )
+			_inFileText.append( "\n" );
+	}
 }
 
 int		NotSed::openOutFile( void ) {
