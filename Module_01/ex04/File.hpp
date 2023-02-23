@@ -1,10 +1,10 @@
-#ifndef NOTSED_H
-# define NOTSED_H
+#ifndef FILE_H
+# define FILE_H
 
 # include <iostream>
 # include <fstream>
 
-class	NotSed {
+class	File {
 	private:
 		int				_isError;
 		std::string		_inFilePath;
@@ -15,8 +15,8 @@ class	NotSed {
 		std::string		_replacedText;
 
 	public:
-		NotSed( void );
-		~NotSed( void );
+		File( void );
+		~File( void );
 
 		void	setInFilePath ( std::string filePath );
 		void	setOutFilePath ( std::string filePath );
@@ -25,6 +25,7 @@ class	NotSed {
 		void	replaceText( std::string findWord, std::string replaceWord );
 		int		openOutFile( void );
 		void	writeToOutFile( void );
+		int		sed( std::string fileName, std::string findWord, std::string replaceWord );
 };
 
 #endif

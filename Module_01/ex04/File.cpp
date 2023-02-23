@@ -1,25 +1,25 @@
-#include "NotSed.hpp"
+#include "File.hpp"
 
-NotSed::NotSed( void ) {
+File::File( void ) {
 	this->_isError = 0;
 	return ;
 }
 
-NotSed::~NotSed( void ) {
+File::~File( void ) {
 	this->_inFile.close();
 	this->_outFile.close();
 	return ;
 }
 
-void	NotSed::setInFilePath ( std::string filePath ) {
+void	File::setInFilePath ( std::string filePath ) {
 	this->_inFilePath = filePath;
 }
 
-void	NotSed::setOutFilePath ( std::string filePath ) {
+void	File::setOutFilePath ( std::string filePath ) {
 	this->_outFilePath = filePath;
 }
 
-int		NotSed::openInFile( void ) {
+int		File::openInFile( void ) {
 	if ( _isError )
 		return ( 1 );
 	this->_inFile.open( _inFilePath.c_str() );
@@ -31,7 +31,7 @@ int		NotSed::openInFile( void ) {
 	return ( 1 );
 }
 
-void	NotSed::readInFile( void ) {
+void	File::readInFile( void ) {
 	std::string		line;
 
 	if ( _isError )
@@ -43,7 +43,7 @@ void	NotSed::readInFile( void ) {
 	}
 }
 
-int		NotSed::openOutFile( void ) {
+int		File::openOutFile( void ) {
 	if ( _isError )
 		return ( 0 );
 	this->_outFile.open( _outFilePath.c_str() );
@@ -55,7 +55,7 @@ int		NotSed::openOutFile( void ) {
 	return ( 1 );
 }
 
-void	NotSed::replaceText( std::string findWord, std::string replaceWord ) {
+void	File::replaceText( std::string findWord, std::string replaceWord ) {
 	ssize_t		found;
 
 	if ( _isError )
@@ -70,8 +70,21 @@ void	NotSed::replaceText( std::string findWord, std::string replaceWord ) {
 	}
 }
 
-void	NotSed::writeToOutFile( void ) {
+void	File::writeToOutFile( void ) {
 	if ( _isError )
 		return ;
 	_outFile << _replacedText;
+}
+
+int	File::sed( std::string fileName, std::string findWord, std::string replaceWord ) {
+	this->setInFilePath( fileName );
+	if ( !this->openInFile() )
+		return ( 0 );
+	this->readInFile();
+	this->replaceText( findWord, replaceWord );
+	this->setOutFilePath( std::string( fileName ).append( ".replace" ) );
+	if ( !this->openOutFile() )
+		return ( 0 );
+	this->writeToOutFile();
+	return ( 1 );
 }

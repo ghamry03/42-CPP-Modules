@@ -1,7 +1,7 @@
 NAME		=	notSed
 
 SRCS		=	main.cpp		\
-				NotSed.cpp		\
+				File.cpp		\
 
 OBJS		=	$(SRCS:.cpp=.o)
 
