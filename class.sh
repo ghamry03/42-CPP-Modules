@@ -41,14 +41,14 @@ echo "#ifndef ${classNameUpper}_HPP
 
 # include <iostream>
 
-class Fixed {
+class $className {
     private:
 
     public:
         $className( void );
         ~$className( void );
-        $className( Fixed& copy );
-        $className & operator=( Fixed const& copy );
+        $className( $className & copy );
+        $className & operator=( $className const & copy );
 
 };
 
@@ -56,23 +56,19 @@ class Fixed {
 " >> $hppPath
 
 ### CPP FILE
-echo "#include "$className.hpp"
+echo "#include \"$className.hpp\"
 
-$className::$className( void ) : {
-    std::cout << "Default constructor called" << std::endl;
+$className::$className( void ) {
 }
 
 $className::~$className( void ) {
-    std::cout << "Destructor called" << std::endl;
 }
 
 $className::$className( $className & copy ) {
-    std::cout << "Copy constructor called" << std::endl;
     *this = copy;
 }
 
 $className & $className::operator=( $className const & copy ) {
-    std::cout << "Copy assignment operator called" << std::endl;
     return ( *this );
 }
 " >> $cppPath
