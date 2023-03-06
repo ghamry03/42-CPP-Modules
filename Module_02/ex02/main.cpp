@@ -85,12 +85,16 @@ void    boolenTestCases( void ) {
 
     res = a < b ? "True" : "False";
     printTestCase( "a < b", a, b, res);
+
     res = a > b ? "True" : "False";
     printTestCase( "a > b", a, b, res);
+
     res = a <= b ? "True" : "False";
     printTestCase( "a <= b", a, b, res);
+
     res = a >= b ? "True" : "False";
     printTestCase( "a >= b", a, b, res);
+
     res = a == b ? "True" : "False";
     printTestCase( "a == b", a, b, res);
     res = a != b ? "True" : "False";
