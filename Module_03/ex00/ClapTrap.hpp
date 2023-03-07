@@ -5,12 +5,13 @@
 
 class ClapTrap {
     private:
-        std::string _name;
-        int         _health;
-        int         _energy;
-        int         _attackDmg;
+        std::string     _name;
+        unsigned int    _health;
+        unsigned int    _energy;
+        unsigned int    _attackDmg;
 
     public:
+        ClapTrap( void );
         ClapTrap( std::string name );
         ~ClapTrap( void );
         ClapTrap( ClapTrap & copy );
