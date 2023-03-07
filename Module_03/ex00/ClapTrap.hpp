@@ -5,10 +5,11 @@
 
 class ClapTrap {
     private:
-        std::string     _name;
-        unsigned int    _health;
-        unsigned int    _energy;
-        unsigned int    _attackDmg;
+        std::string         _name;
+        unsigned int        _health;
+        unsigned int        _energy;
+        unsigned int        _attackDmg;
+        virtual std::string getType( void );
 
     public:
         ClapTrap( void );

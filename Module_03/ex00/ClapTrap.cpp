@@ -1,15 +1,19 @@
 #include "ClapTrap.hpp"
 
+std::string ClapTrap::getType( void ) {
+    return ( "ClapTrap" );
+}
+
 ClapTrap::ClapTrap( void ) : _name("default"), _health(10), _energy(10), _attackDmg(10) {
-    std::cout << "ClapTrap " << " joined the party using default constructor" << std::endl;
+    std::cout << getType().append(" ") << " joined the party using default constructor" << std::endl;
 }
 
 ClapTrap::ClapTrap( std::string name ) : _name(name), _health(10), _energy(10), _attackDmg(10) {
-    std::cout << "ClapTrap " << _name << " joined the party" << std::endl;
+    std::cout << getType().append(" ") << _name << " joined the party" << std::endl;
 }
 
 ClapTrap::~ClapTrap( void ) {
-    std::cout << "ClapTrap " << _name << " left the party" << std::endl;
+    std::cout << getType().append(" ") << _name << " left the party" << std::endl;
 }
 
 ClapTrap::ClapTrap( ClapTrap & copy ) {
@@ -26,22 +30,22 @@ ClapTrap & ClapTrap::operator=( ClapTrap const & copy ) {
 
 void    ClapTrap::attack( const std::string & target ) {
     if (!this->_energy || !this->_health) {
-        std::cout << "ClapTrap " << this->_name
+        std::cout << getType().append(" ") << this->_name
             << " is out of energy" << std::endl;
         return ;
     }
-    std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing "
+    std::cout << getType().append(" ") << this->_name << " attacks " << target << ", causing "
         << _attackDmg << " points of damage!" << std::endl;
     this->_energy--;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
     if (this->_health <= amount) {
-        std::cout << "ClapTrap " << this->_name
+        std::cout << getType().append(" ") << this->_name
             << " is dead" << std::endl;
         return ;
     }
-    std::cout << "ClapTrap " << this->_name << " lost "
+    std::cout << getType().append(" ") << this->_name << " lost "
         << amount << " hit points" << std::endl;
     this->_health -= amount;
     std::cout << "bruh: " << this->_health << std::endl;
@@ -49,11 +53,11 @@ void ClapTrap::takeDamage(unsigned int amount) {
 
 void ClapTrap::beRepaired(unsigned int amount) {
     if (!this->_energy || !this->_health) {
-        std::cout << "ClapTrap " << this->_name
+        std::cout << getType().append(" ") << this->_name
             << " is out of energy" << std::endl;
         return ;
     }
-    std::cout << "ClapTrap " << this->_name << " gained "
+    std::cout << getType().append(" ") << this->_name << " gained "
         << amount << " hit points back" << std::endl;
     this->_health += amount;
     this->_energy--;
