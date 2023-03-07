@@ -3,7 +3,7 @@
 
 # include "ClapTrap.hpp"
 
-class ScavTrap : protected ClapTrap {
+class ScavTrap : public ClapTrap {
     private:
         /**** private member functions ****/
         std::string getType( void );
