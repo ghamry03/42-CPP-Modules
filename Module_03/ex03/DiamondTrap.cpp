@@ -13,9 +13,9 @@ DiamondTrap::DiamondTrap( void ) : ClapTrap(), ScavTrap(), FragTrap() {
     this->_attackDmg = FragTrap::_attackDmg;
 }
 
-// scavTrap name && FragTrap name are the same as ClapTrap??
+// scavTrap name && FragTrap name are the same as ClapTrap?? but ..
 // maybe because they inherit from ClapTrap and it's virtual, sah? but it should use attack from ScavTrap ..
-// ask Hussein
+// ask Hussein, also check the last function
 DiamondTrap::DiamondTrap( std::string name ) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
     this->_name = name;
     this->_health = FragTrap::_health;
@@ -46,4 +46,10 @@ DiamondTrap & DiamondTrap::operator=( DiamondTrap const & copy ) {
 void    DiamondTrap::wohAmI( void ) {
     std::cout << "DiamondTrap name " << this->_name
         << " - ClapTrap name " << ClapTrap::_name << std::endl;
+}
+
+// virtual fun is shooting me in the legg:(( it makes no diff
+// Hussieeenn hellppp
+void    DiamondTrap::attack( const std::string & target ) {
+    ScavTrap::attack(target);
 }

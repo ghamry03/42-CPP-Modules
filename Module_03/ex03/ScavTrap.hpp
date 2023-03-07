@@ -6,7 +6,7 @@
 class ScavTrap : virtual public ClapTrap {
     private:
         /**** private member functions ****/
-        virtual std::string getType( void );
+        std::string getType( void );
 
     public:
         /**** private constructors && destructors ****/
