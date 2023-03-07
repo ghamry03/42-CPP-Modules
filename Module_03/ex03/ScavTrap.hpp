@@ -3,10 +3,10 @@
 
 # include "ClapTrap.hpp"
 
-class ScavTrap : protected ClapTrap {
+class ScavTrap : virtual public ClapTrap {
     private:
         /**** private member functions ****/
-        std::string getType( void );
+        virtual std::string getType( void );
 
     public:
         /**** private constructors && destructors ****/
