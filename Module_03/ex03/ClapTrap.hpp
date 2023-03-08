@@ -11,15 +11,16 @@ class ClapTrap {
         unsigned int        _energy;
         unsigned int        _attackDmg;
 
+    private:
         /**** private member functions ****/
-        virtual std::string getType( void );
+        virtual std::string getType( void ) const;
 
     public:
         /**** public constructors && destructors ****/
         ClapTrap( void );
         ClapTrap( std::string name );
         ~ClapTrap( void );
-        ClapTrap( ClapTrap & copy );
+        ClapTrap( ClapTrap const & copy );
 
         /**** public operators overload  ****/
         ClapTrap & operator=( ClapTrap const & copy );

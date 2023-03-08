@@ -6,21 +6,21 @@
 class ScavTrap : virtual public ClapTrap {
     private:
         /**** private member functions ****/
-        std::string getType( void );
+        std::string getType( void ) const;
 
     public:
         /**** private constructors && destructors ****/
         ScavTrap( void );
         ScavTrap( std::string name );
         ~ScavTrap( void );
-        ScavTrap( ScavTrap & copy );
+        ScavTrap( ScavTrap const & copy );
 
         /**** public operators overload  ****/
         ScavTrap & operator=( ScavTrap const & copy );
 
         /**** public member functions ****/
         void    attack( const std::string & target );
-        void    guardGate( void );
+        void    guardGate( void ) const;
 };
 
 #endif

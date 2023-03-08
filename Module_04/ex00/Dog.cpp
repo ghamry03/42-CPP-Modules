@@ -23,6 +23,6 @@ Dog & Dog::operator=( Dog const & copy ) {
     return ( *this );
 }
 
-std::string Dog::_getSound( void ) const {
-    return ("WOAFF WOAFF!!");
+void Dog::makeSound( void ) const {
+    std::cout << "Woaff!?" << std::endl;
 }

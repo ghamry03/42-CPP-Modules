@@ -1,6 +1,6 @@
 #include "DiamondTrap.hpp"
 
-std::string DiamondTrap::getType( void ) {
+std::string DiamondTrap::getType( void ) const {
     return ("DiamondTrap");
 }
 
@@ -27,7 +27,7 @@ DiamondTrap::~DiamondTrap( void ) {
         << " left the party" << std::endl;
 }
 
-DiamondTrap::DiamondTrap( DiamondTrap & copy ) : ClapTrap(copy), ScavTrap(copy), FragTrap(copy) {
+DiamondTrap::DiamondTrap( DiamondTrap const & copy ) : ClapTrap(copy), ScavTrap(copy), FragTrap(copy) {
     *this = copy;
 }
 
@@ -39,7 +39,7 @@ DiamondTrap & DiamondTrap::operator=( DiamondTrap const & copy ) {
     return ( *this );
 }
 
-void    DiamondTrap::wohAmI( void ) {
+void    DiamondTrap::wohAmI( void ) const {
     std::cout << "DiamondTrap name " << this->_name
         << " - ClapTrap name " << ClapTrap::_name << std::endl;
 }

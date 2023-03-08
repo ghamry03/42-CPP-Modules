@@ -1,6 +1,6 @@
 #include "ClapTrap.hpp"
 
-std::string ClapTrap::getType( void ) {
+std::string ClapTrap::getType( void ) const {
     return ( "ClapTrap" );
 }
 
@@ -8,7 +8,7 @@ ClapTrap::ClapTrap( void ) : _name("default"), _health(10), _energy(10), _attack
     std::cout << getType().append(" ") << " joined the party using default constructor" << std::endl;
 }
 
-ClapTrap::ClapTrap( std::string name ) : _name(name), _health(10), _energy(10), _attackDmg(10) {
+ClapTrap::ClapTrap( const std::string & name ) : _name(name), _health(10), _energy(10), _attackDmg(10) {
     std::cout << getType().append(" ") << _name << " joined the party" << std::endl;
 }
 
@@ -16,11 +16,11 @@ ClapTrap::~ClapTrap( void ) {
     std::cout << getType().append(" ") << _name << " left the party" << std::endl;
 }
 
-ClapTrap::ClapTrap( ClapTrap & copy ) {
+ClapTrap::ClapTrap( const ClapTrap & copy ) {
     *this = copy;
 }
 
-ClapTrap & ClapTrap::operator=( ClapTrap const & copy ) {
+ClapTrap & ClapTrap::operator=( const ClapTrap & copy ) {
     this->_name = copy._name;
     this->_health = copy._health;
     this->_energy = copy._energy;

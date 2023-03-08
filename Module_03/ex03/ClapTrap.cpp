@@ -1,6 +1,6 @@
 #include "ClapTrap.hpp"
 
-std::string ClapTrap::getType( void ) {
+std::string ClapTrap::getType( void ) const {
     return ( "ClapTrap" );
 }
 
@@ -16,7 +16,7 @@ ClapTrap::~ClapTrap( void ) {
     std::cout << getType().append(" ") << _name << " left the party" << std::endl;
 }
 
-ClapTrap::ClapTrap( ClapTrap & copy ) {
+ClapTrap::ClapTrap( ClapTrap const & copy ) {
     *this = copy;
 }
 

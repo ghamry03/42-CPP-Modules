@@ -1,6 +1,6 @@
 #include "FragTrap.hpp"
 
-std::string FragTrap::getType( void ) {
+std::string FragTrap::getType( void ) const {
     return ("FragTrap");
 }
 
@@ -25,7 +25,7 @@ FragTrap::~FragTrap( void ) {
         << " left the party" << std::endl;
 }
 
-FragTrap::FragTrap( FragTrap & copy ) : ClapTrap(copy) {
+FragTrap::FragTrap( FragTrap const & copy ) : ClapTrap(copy) {
     *this = copy;
 }
 
@@ -37,7 +37,7 @@ FragTrap & FragTrap::operator=( FragTrap const & copy ) {
     return ( *this );
 }
 
-void    FragTrap::highFivesGuys( void ) {
+void    FragTrap::highFivesGuys( void ) const {
     std::cout << getType().append(" ") << _name
         << " requested high five" << std::endl;
 }

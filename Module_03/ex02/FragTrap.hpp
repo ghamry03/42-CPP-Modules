@@ -6,20 +6,20 @@
 class FragTrap : public ClapTrap {
     private:
         /**** private member functions ****/
-        std::string getType( void );
+        std::string getType( void ) const;
 
     public:
         /**** private constructors && destructors ****/
         FragTrap( void );
-        FragTrap( std::string name );
-        ~FragTrap( void );
-        FragTrap( FragTrap & copy );
+        FragTrap( const std::string name );
+        virtual ~FragTrap( void );
+        FragTrap( const FragTrap & copy );
 
         /**** public operators overload  ****/
-        FragTrap & operator=( FragTrap const & copy );
+        FragTrap & operator=( const FragTrap & copy );
 
         /**** public member functions ****/
-        void    highFivesGuys( void );
+        void    highFivesGuys( void ) const;
 };
 
 #endif

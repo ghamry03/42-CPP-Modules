@@ -5,9 +5,6 @@
 # include "Animal.hpp"
 
 class Cat : public Animal {
-    private:
-        std::string _getSound( void ) const;
-
     public:
         Cat( void );
         Cat( std::string type );
@@ -15,6 +12,7 @@ class Cat : public Animal {
         Cat( Cat & copy );
         Cat & operator=( Cat const & copy );
 
+        void makeSound( void ) const;
 };
 
 #endif

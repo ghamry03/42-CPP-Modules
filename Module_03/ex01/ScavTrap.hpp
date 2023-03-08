@@ -6,17 +6,17 @@
 class ScavTrap : public ClapTrap {
     private:
         /**** private member functions ****/
-        std::string getType( void );
+        std::string getType( void ) const;
 
     public:
         /**** private constructors && destructors ****/
         ScavTrap( void );
-        ScavTrap( std::string name );
+        ScavTrap( const std::string & name );
         ~ScavTrap( void );
-        ScavTrap( ScavTrap & copy );
+        ScavTrap( const ScavTrap & copy );
 
         /**** public operators overload  ****/
-        ScavTrap & operator=( ScavTrap const & copy );
+        ScavTrap & operator=( const ScavTrap & copy );
 
         /**** public member functions ****/
         void    guardGate( void );

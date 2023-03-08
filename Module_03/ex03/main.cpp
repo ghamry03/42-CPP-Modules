@@ -1,11 +1,21 @@
 #include "DiamondTrap.hpp"
 
 int main( void ) {
-    DiamondTrap a("hamada");
-    std::cout << "--------------------------------------------" << std::endl;
+    DiamondTrap a( "DiamondA" );
+    const DiamondTrap b( "DiamondB" );
+    DiamondTrap c(a);
+
+    std::cout << std::endl;
+
     a.wohAmI();
-    a.attack("mr confused");
-    std::cout << std::endl
-              << "--------------------------------------------" << std::endl;
+    b.wohAmI();
+    c.wohAmI();
+
+    std::cout << std::endl;
+
+    a.attack("bruv");
+
+    std::cout << std::endl;
+
     return 1;
 }

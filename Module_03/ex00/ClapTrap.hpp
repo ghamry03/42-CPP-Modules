@@ -9,14 +9,14 @@ class ClapTrap {
         unsigned int        _health;
         unsigned int        _energy;
         unsigned int        _attackDmg;
-        virtual std::string getType( void );
+        virtual std::string getType( void ) const;
 
     public:
         ClapTrap( void );
-        ClapTrap( std::string name );
+        ClapTrap( const std::string & name );
         ~ClapTrap( void );
-        ClapTrap( ClapTrap & copy );
-        ClapTrap & operator=( ClapTrap const & copy );
+        ClapTrap( const ClapTrap & copy );
+        ClapTrap & operator=( const ClapTrap & copy );
 
         void attack( const std::string & target );
         void takeDamage(unsigned int amount);

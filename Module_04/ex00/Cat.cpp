@@ -23,6 +23,6 @@ Cat & Cat::operator=( Cat const & copy ) {
     return ( *this );
 }
 
-std::string Cat::_getSound( void ) const {
-    return ("MEOWW!!");
+void Cat::makeSound( void ) const {
+    std::cout << "Meoww!?" << std::endl;
 }

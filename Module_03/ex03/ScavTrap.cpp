@@ -1,6 +1,6 @@
 #include "ScavTrap.hpp"
 
-std::string ScavTrap::getType( void ) {
+std::string ScavTrap::getType( void ) const {
     return ("ScavTrap");
 }
 
@@ -25,7 +25,7 @@ ScavTrap::~ScavTrap( void ) {
         << " left the party" << std::endl;
 }
 
-ScavTrap::ScavTrap( ScavTrap & copy ) : ClapTrap(copy) {
+ScavTrap::ScavTrap( ScavTrap const & copy ) : ClapTrap(copy) {
     *this = copy;
 }
 
@@ -48,7 +48,7 @@ void    ScavTrap::attack( const std:: string & target ) {
     this->_energy--;
 }
 
-void    ScavTrap::guardGate( void ) {
+void    ScavTrap::guardGate( void )  const {
     std::cout << getType().append(" ") << this->_name
         << " is guarding the gate" << std::endl;
 }
