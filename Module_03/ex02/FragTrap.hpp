@@ -11,12 +11,12 @@ class FragTrap : public ClapTrap {
     public:
         /**** private constructors && destructors ****/
         FragTrap( void );
-        FragTrap( const std::string name );
+        FragTrap( std::string const & name );
         virtual ~FragTrap( void );
-        FragTrap( const FragTrap & copy );
+        FragTrap( FragTrap const & copy );
 
         /**** public operators overload  ****/
-        FragTrap & operator=( const FragTrap & copy );
+        FragTrap & operator=( FragTrap const & copy );
 
         /**** public member functions ****/
         void    highFivesGuys( void ) const;
