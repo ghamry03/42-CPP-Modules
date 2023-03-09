@@ -18,7 +18,7 @@ class ClapTrap {
     public:
         /**** public constructors && destructors ****/
         ClapTrap( void );
-        ClapTrap( std::string name );
+        ClapTrap( std::string const & name );
         ~ClapTrap( void );
         ClapTrap( ClapTrap const & copy );
 
@@ -26,7 +26,7 @@ class ClapTrap {
         ClapTrap & operator=( ClapTrap const & copy );
 
         /**** public member functions ****/
-        void attack( const std::string & target );
+        void attack( std::string const & target );
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
 

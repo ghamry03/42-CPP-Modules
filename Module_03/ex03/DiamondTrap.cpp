@@ -45,6 +45,6 @@ void    DiamondTrap::wohAmI( void ) const {
         << " - ClapTrap name " << ClapTrap::_name << std::endl;
 }
 
-void    DiamondTrap::attack( const std::string & target ) {
+void    DiamondTrap::attack( std::string const & target ) {
     ScavTrap::attack(target);
 }

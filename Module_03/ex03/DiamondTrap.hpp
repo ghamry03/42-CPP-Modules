@@ -19,7 +19,7 @@ class DiamondTrap : public ScavTrap, public FragTrap {
         DiamondTrap & operator=( DiamondTrap const & copy );
 
         void    wohAmI( void ) const;
-        void    attack( const std::string & target );
+        void    attack( std::string const & target );
 };
 
 #endif

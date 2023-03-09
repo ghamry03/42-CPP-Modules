@@ -11,7 +11,7 @@ class FragTrap : virtual public ClapTrap {
     public:
         /**** private constructors && destructors ****/
         FragTrap( void );
-        FragTrap( std::string name );
+        FragTrap( std::string const & name );
         ~FragTrap( void );
         FragTrap( FragTrap const & copy );
 

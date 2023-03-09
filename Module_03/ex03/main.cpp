@@ -17,10 +17,6 @@ int main( void ) {
 
     std::cout << std::endl;
     std::string  str = "fdsa";
-    ScavTrap abc(str);
-    str = "dadsdsadasd";
-    std::cout << str << std::endl;
-    Scav
 
     return 1;
 }

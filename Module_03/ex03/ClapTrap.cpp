@@ -8,7 +8,7 @@ ClapTrap::ClapTrap( void ) : _name("default"), _health(10), _energy(10), _attack
     std::cout << getType().append(" ") << " joined the party using default constructor" << std::endl;
 }
 
-ClapTrap::ClapTrap( std::string name ) : _name(name), _health(10), _energy(10), _attackDmg(10) {
+ClapTrap::ClapTrap( std::string const & name ) : _name(name), _health(10), _energy(10), _attackDmg(10) {
     std::cout << getType().append(" ") << _name << " joined the party" << std::endl;
 }
 
@@ -28,7 +28,7 @@ ClapTrap & ClapTrap::operator=( ClapTrap const & copy ) {
     return ( *this );
 }
 
-void    ClapTrap::attack( const std::string & target ) {
+void    ClapTrap::attack( std::string const & target ) {
     if (!this->_energy || !this->_health) {
         std::cout << getType().append(" ") << this->_name
             << " is out of energy" << std::endl;

@@ -12,7 +12,7 @@ FragTrap::FragTrap( void ) : ClapTrap() {
     this->_attackDmg = 20;
 }
 
-FragTrap::FragTrap( std::string name ) : ClapTrap( name ) {
+FragTrap::FragTrap( std::string const & name ) : ClapTrap( name ) {
     std::cout << getType().append(" ") << this->_name
         << " joined the party" << std::endl;
     this->_health = 100;
