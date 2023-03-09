@@ -13,12 +13,12 @@ class ClapTrap {
 
     public:
         ClapTrap( void );
-        ClapTrap( const std::string & name );
+        ClapTrap( std::string const & name );
         ~ClapTrap( void );
-        ClapTrap( const ClapTrap & copy );
-        ClapTrap & operator=( const ClapTrap & copy );
+        ClapTrap( ClapTrap const & copy );
+        ClapTrap & operator=( ClapTrap const & copy );
 
-        void attack( const std::string & target );
+        void attack( std::string const & target );
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
 
