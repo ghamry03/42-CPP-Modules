@@ -7,9 +7,9 @@
 class Cat : public Animal {
     public:
         Cat( void );
-        Cat( std::string type );
+        Cat( std::string const & type );
         ~Cat( void );
-        Cat( Cat & copy );
+        Cat( Cat const & copy );
         Cat & operator=( Cat const & copy );
 
         void makeSound( void ) const;

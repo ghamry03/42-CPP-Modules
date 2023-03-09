@@ -10,9 +10,9 @@ class Dog : public Animal {
 
     public:
         Dog( void );
-        Dog( std::string Animal );
+        Dog( std::string const & Animal );
         ~Dog( void );
-        Dog( Dog & copy );
+        Dog( Dog const & copy );
         Dog & operator=( Dog const & copy );
 
         void makeSound( void ) const;

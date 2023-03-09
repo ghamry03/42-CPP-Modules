@@ -9,9 +9,9 @@ class Animal {
 
     public:
         Animal( void );
-        Animal( std::string type );
+        Animal( std::string const & type );
         virtual ~Animal( void );
-        Animal( Animal & copy );
+        Animal( Animal const & copy );
         Animal & operator=( Animal const & copy );
 
         std::string getType( void ) const;

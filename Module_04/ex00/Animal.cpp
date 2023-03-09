@@ -4,7 +4,7 @@ Animal::Animal( void ) : _type("Animal") {
     std::cout << "Animal constructor is called" << std::endl;
 }
 
-Animal::Animal( std::string type ) : _type(type) {
+Animal::Animal( std::string const & type ) : _type(type) {
     std::cout << "Animal constructor is called" << std::endl;
 }
 
@@ -12,7 +12,7 @@ Animal::~Animal( void ) {
     std::cout << "Animal destructor is called" << std::endl;
 }
 
-Animal::Animal( Animal & copy ) {
+Animal::Animal( Animal const & copy ) {
     std::cout << "Animal copy constructor is called" << std::endl;
     *this = copy;
 }

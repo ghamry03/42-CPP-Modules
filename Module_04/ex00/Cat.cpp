@@ -4,7 +4,7 @@ Cat::Cat( void ) : Animal("Cat") {
     std::cout << "Cat constructor is called" << std::endl;
 }
 
-Cat::Cat( std::string type ) : Animal(type) {
+Cat::Cat( std::string const & type ) : Animal(type) {
     std::cout << "Cat constructor is called" << std::endl;
 }
 
@@ -12,7 +12,7 @@ Cat::~Cat( void ) {
     std::cout << "Cat destructor is called" << std::endl;
 }
 
-Cat::Cat( Cat & copy ) : Animal(copy) {
+Cat::Cat( Cat const & copy ) : Animal(copy) {
     std::cout << "Cat copy constructor is called" << std::endl;
     *this = copy;
 }
