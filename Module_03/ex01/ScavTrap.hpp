@@ -11,12 +11,12 @@ class ScavTrap : public ClapTrap {
     public:
         /**** private constructors && destructors ****/
         ScavTrap( void );
-        ScavTrap( const std::string & name );
+        ScavTrap( std::string const & name );
         ~ScavTrap( void );
-        ScavTrap( const ScavTrap & copy );
+        ScavTrap( ScavTrap const & copy );
 
         /**** public operators overload  ****/
-        ScavTrap & operator=( const ScavTrap & copy );
+        ScavTrap & operator=( ScavTrap const & copy );
 
         /**** public member functions ****/
         void    guardGate( void );
