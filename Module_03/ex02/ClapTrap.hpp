@@ -19,7 +19,7 @@ class ClapTrap {
         /**** public constructors && destructors ****/
         ClapTrap( void );
         ClapTrap( const std::string & name );
-        ~ClapTrap( void );
+        virtual ~ClapTrap( void );
         ClapTrap( const ClapTrap & copy );
 
         /**** public operators overload  ****/

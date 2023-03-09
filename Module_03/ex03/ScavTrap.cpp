@@ -12,7 +12,7 @@ ScavTrap::ScavTrap( void ) : ClapTrap() {
     this->_attackDmg = 20;
 }
 
-ScavTrap::ScavTrap( std::string name ) : ClapTrap( name ) {
+ScavTrap::ScavTrap( std::string const & name ) : ClapTrap( name ) {
     std::cout << getType().append(" ") << this->_name
         << " joined the party" << std::endl;
     this->_health = 100;
@@ -37,7 +37,7 @@ ScavTrap & ScavTrap::operator=( ScavTrap const & copy ) {
     return ( *this );
 }
 
-void    ScavTrap::attack( const std:: string & target ) {
+void    ScavTrap::attack( std::string const & target ) {
     if (!this->_energy || !this->_health) {
         std::cout << "ScavTrap " << this->_name
             << " is out of energy" << std::endl;

@@ -11,7 +11,7 @@ class ScavTrap : virtual public ClapTrap {
     public:
         /**** private constructors && destructors ****/
         ScavTrap( void );
-        ScavTrap( std::string name );
+        ScavTrap( std::string const & name );
         ~ScavTrap( void );
         ScavTrap( ScavTrap const & copy );
 
@@ -19,7 +19,7 @@ class ScavTrap : virtual public ClapTrap {
         ScavTrap & operator=( ScavTrap const & copy );
 
         /**** public member functions ****/
-        void    attack( const std::string & target );
+        void    attack( std::string const & target );
         void    guardGate( void ) const;
 };
 

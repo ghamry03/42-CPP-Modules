@@ -13,13 +13,14 @@ DiamondTrap::DiamondTrap( void ) : ClapTrap(), ScavTrap(), FragTrap() {
     this->_attackDmg = FragTrap::_attackDmg;
 }
 
-DiamondTrap::DiamondTrap( std::string name ) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
-    this->_name = name;
-    this->_health = FragTrap::_health;
-    this->_energy = ScavTrap::_energy;
-    this->_attackDmg = FragTrap::_attackDmg;
-    std::cout << getType().append(" ") << this->_name
-        << " joined the party" << std::endl;
+DiamondTrap::DiamondTrap( std::string const & name )
+    : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
+        this->_name = name;
+        this->_health = FragTrap::_health;
+        this->_energy = ScavTrap::_energy;
+        this->_attackDmg = FragTrap::_attackDmg;
+        std::cout << getType().append(" ") << this->_name
+            << " joined the party" << std::endl;
 }
 
 DiamondTrap::~DiamondTrap( void ) {

@@ -47,8 +47,8 @@ class $className {
     public:
         $className( void );
         ~$className( void );
-        $className( const $className & copy );
-        $className & operator=( const $className & copy );
+        $className( $className const & copy );
+        $className & operator=( $className const & copy );
 
 };
 
@@ -64,11 +64,11 @@ $className::$className( void ) {
 $className::~$className( void ) {
 }
 
-$className::$className( const $className & copy ) {
+$className::$className( $className const & copy ) {
     *this = copy;
 }
 
-$className & $className::operator=( const $className & copy ) {
+$className & $className::operator=( $className const & copy ) {
     return ( *this );
 }
 " >> $cppPath

@@ -6,7 +6,7 @@
 class FragTrap : virtual public ClapTrap {
     private:
         /**** private member functions ****/
-        virtual std::string getType( void ) const;
+        std::string getType( void ) const;
 
     public:
         /**** private constructors && destructors ****/
