@@ -9,6 +9,7 @@
 class DiamondTrap : public ScavTrap, public FragTrap {
     private:
         std::string _name;
+        std::string _type;
         std::string getType( void ) const;
 
     public:

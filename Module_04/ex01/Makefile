@@ -1,12 +1,16 @@
-NAME		=	Zombie
+NAME		=	Animal
 
-SRCS		=	main.cpp		\
+SRCS		=	main.cpp			\
+				Animal.cpp			\
+				Cat.cpp				\
+				Dog.cpp				\
+				Brain.cpp			\
 
 OBJS		=	$(SRCS:.cpp=.o)
 
 CXX			=	c++
 
-CXXFLAGS	=	-Wall -Werror -Wextra -Wconversion -std=c++98
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -fsanitize=address
 
 RM			=	rm -f
 
@@ -22,3 +26,4 @@ fclean		:	clean
 				$(RM) $(NAME)
 
 re			:	fclean all
+

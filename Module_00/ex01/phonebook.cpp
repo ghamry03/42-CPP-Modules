@@ -12,7 +12,7 @@ Phonebook::~Phonebook ( void ) {
 }
 
 std::string	Phonebook::_fixString( std::string str ) {
-	int		len;
+	size_t	len;
 
 	len = str.length();
 	if (len > 10) {

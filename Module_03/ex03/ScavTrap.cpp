@@ -37,16 +37,16 @@ ScavTrap & ScavTrap::operator=( ScavTrap const & copy ) {
     return ( *this );
 }
 
-void    ScavTrap::attack( std::string const & target ) {
-    if (!this->_energy || !this->_health) {
-        std::cout << "ScavTrap " << this->_name
-            << " is out of energy" << std::endl;
-        return ;
-    }
-    std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing "
-        << _attackDmg << " points of damage!" << std::endl;
-    this->_energy--;
-}
+// void    ScavTrap::attack( std::string const & target ) {
+//     if (!this->_energy || !this->_health) {
+//         std::cout << "ScavTrap " << this->_name
+//             << " is out of energy" << std::endl;
+//         return ;
+//     }
+//     std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing "
+//         << _attackDmg << " points of damage!" << std::endl;
+//     this->_energy--;
+// }
 
 void    ScavTrap::guardGate( void )  const {
     std::cout << getType().append(" ") << this->_name

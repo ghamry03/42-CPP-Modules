@@ -13,7 +13,7 @@ Fixed::Fixed( const int num ) {
 }
 
 Fixed::Fixed( const float num ) {
-    this->setRawBits( round( num * ( 1 << _bitsNum ) ));
+    this->setRawBits( (int)round( num * ( 1 << _bitsNum ) ));
 }
 
 Fixed::~Fixed( void ) {

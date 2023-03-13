@@ -6,7 +6,9 @@ int main( void ) {
    ClapTrap second("second");
 
     first.attack("second");
-    second.takeDamage((unsigned int)INT_MAX + 2);
+    // second.takeDamage((unsigned int)INT_MAX + 2);
+    second.takeDamage(99);
+    second.attack("dasda");
     second.beRepaired(1);
     return ( 0 );
 }

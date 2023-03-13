@@ -56,13 +56,13 @@ int		File::openOutFile( void ) {
 }
 
 void	File::replaceText( std::string findWord, std::string replaceWord ) {
-	ssize_t		found;
+	size_t	found;
 
 	if ( _isError )
 			return ;
 	for ( size_t i = 0; i < _inFileText.size(); i++ ) {
 		found = _inFileText.find( findWord, i );
-		if ( found != -1 && (size_t)found == i ) {
+		if ( found != std::string::npos && (size_t)found == i ) {
 			_replacedText += replaceWord;
 			i += findWord.size() - 1;
 		} else

@@ -9,7 +9,7 @@ std::string     floatToString( float num ) {
 }
 
 std::string    fixString( std::string str ) {
-    int            len;
+    size_t  len;
 
     len = str.length();
     if (len > 10) {
@@ -23,7 +23,7 @@ std::string    fixString( std::string str ) {
 }
 
 std::string    fixString( float num ) {
-    int             len;
+    size_t          len;
     std::string     str;
 
     str = floatToString( num );

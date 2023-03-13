@@ -1,7 +1,7 @@
 #include "DiamondTrap.hpp"
 
 std::string DiamondTrap::getType( void ) const {
-    return ("DiamondTrap");
+    return (_type);
 }
 
 DiamondTrap::DiamondTrap( void ) : ClapTrap(), ScavTrap(), FragTrap() {
@@ -11,6 +11,7 @@ DiamondTrap::DiamondTrap( void ) : ClapTrap(), ScavTrap(), FragTrap() {
     this->_health = FragTrap::_health;
     this->_energy = ScavTrap::_energy;
     this->_attackDmg = FragTrap::_attackDmg;
+    this->_type = "DiamondTrap";
 }
 
 DiamondTrap::DiamondTrap( std::string const & name )
@@ -46,5 +47,7 @@ void    DiamondTrap::wohAmI( void ) const {
 }
 
 void    DiamondTrap::attack( std::string const & target ) {
+    _type = "ScavTrap";
     ScavTrap::attack(target);
+    _type = "DiamondTrap";
 }
