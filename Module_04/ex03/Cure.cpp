@@ -17,7 +17,7 @@ Cure & Cure::operator=( Cure const & copy ) {
 
 Cure * Cure::clone( void ) const {
     Cure * ret = new Cure( *this);
-    return(ret);
+    return (ret);
 }
 
 void    Cure::use( ICharacter & target ) {

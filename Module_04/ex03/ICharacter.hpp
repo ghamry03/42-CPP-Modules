@@ -7,10 +7,6 @@
 
 class ICharacter {
     public:
-        ICharacter( void );
-        // ~ICharacter( void );
-        ICharacter( ICharacter const & copy );
-        ICharacter & operator=( ICharacter const & copy );
         virtual ~ICharacter( void );
 
         virtual std::string const & getName( void ) const = 0;

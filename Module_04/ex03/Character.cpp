@@ -2,29 +2,34 @@
 
 Character::Character( void ) : _itemsCount(0), _name("default character") {
     std::cout << "Character default constructor is called" << std::endl;
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 4; i++)
         this->_items[i] = NULL;
 }
 
 Character::Character( std::string const & name ) : _itemsCount(0), _name(name) {
     std::cout << "Character constructor is called" << std::endl;
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 4; i++)
         this->_items[i] = NULL;
 }
 
 Character::~Character( void ) {
     std::cout << "Character destructor is called" << std::endl;
+    for (int i = 0; i < 4; i++)
+        delete this->_items[i];
 }
 
-Character::Character( Character const & copy ) : ICharacter(copy ){
+Character::Character( Character const & copy ) : ICharacter(copy), _name(copy.getName()) {
     std::cout << "Character copy constructor is called" << std::endl;
+    for (int i = 0; i < 4; i++)
+        this->_items[i] = NULL;
     *this = copy;
 }
 
 Character & Character::operator=( Character const & copy ) {
     std::cout << "Character copy assignment operator is called" << std::endl;
     for (int i = 0; i < 4; i++)
-        this->_items[i] = copy._items[i]->clone();
+        if (this->_items[i])
+            this->_items[i] = copy._items[i]->clone();
     this->_itemsCount = copy._itemsCount;
     this->_name = copy.getName();
     return (*this);
@@ -55,6 +60,7 @@ void    Character::unequip(int idx) {
     } else {
         std::cout << "Character dropped item " << idx << std::endl;
         this->_itemsCount--;
+        delete this->_items[idx];
         this->_items[idx] = NULL;
     }
 }

@@ -6,9 +6,9 @@
 
 class Character : public ICharacter {
     private:
-        int             _itemsCount;
-        AMateria    *   _items[4];
-        std::string     _name;
+        int         _itemsCount;
+        AMateria *  _items[4];
+        std::string _name;
 
 
     public:
