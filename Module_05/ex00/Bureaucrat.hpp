@@ -5,19 +5,19 @@
 
 class Bureaucrat {
     private:
-        std::string const                                 _name;
+        const std::string                                 _name;
         int                                              _grade;
         void                             _setGrade( int grade );
 
     public:
                                              Bureaucrat( void );
                                             ~Bureaucrat( void );
-                          Bureaucrat( Bureaucrat const & copy );
+                          Bureaucrat( const Bureaucrat & copy );
                       Bureaucrat( std::string name, int grade );
-        Bureaucrat &       operator=( Bureaucrat const & copy );
+        Bureaucrat &       operator=( const Bureaucrat & copy );
 
         int                              getGrade( void ) const;
-        std::string const                getName( void )  const;
+        const std::string                getName( void )  const;
 
         void                                   incGrade( void );
         void                                   decGrade( void );
@@ -34,6 +34,6 @@ class Bureaucrat {
 };
 
 std::ostream & operator<<( std::ostream & stream, 
-                                Bureaucrat const & bureaucrat );
+                                const Bureaucrat & bureaucrat );
 
 #endif

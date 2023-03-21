@@ -13,12 +13,12 @@ Bureaucrat::~Bureaucrat( void ) {
     std::cout << "Bureaucrat destructor is called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat( Bureaucrat const & copy ) : _name( copy.getName() ) {
+Bureaucrat::Bureaucrat( const Bureaucrat & copy ) : _name( copy.getName() ) {
     std::cout << "Bureaucrat copy constructor is called" << std::endl;
     *this = copy;
 }
 
-Bureaucrat & Bureaucrat::operator=( Bureaucrat const & copy ) {
+Bureaucrat & Bureaucrat::operator=( const Bureaucrat & copy ) {
     std::cout << "Bureaucrat copy assignment operator is called" << std::endl;
     this->_grade = copy._grade;
     return ( *this );
@@ -37,7 +37,7 @@ int                 Bureaucrat::getGrade( void ) const {
     return ( this->_grade );
 }
 
-std::string const   Bureaucrat::getName( void ) const {
+const std::string   Bureaucrat::getName( void ) const {
     return ( this->_name );
 }
 
@@ -57,7 +57,7 @@ const char *        Bureaucrat::GradeTooLowException::what( void ) const throw()
     return ( "Error: Grade Too Low" );
 }
 
-std::ostream &      operator<<( std::ostream & stream, Bureaucrat const & bureaucrat ) {
+std::ostream &      operator<<( std::ostream & stream, const Bureaucrat & bureaucrat ) {
     stream << bureaucrat.getName() << ", bureaucrat grade "
         << bureaucrat.getGrade();
     return ( stream );

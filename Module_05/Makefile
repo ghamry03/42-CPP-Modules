@@ -1,4 +1,5 @@
 DIRS		=	./ex00		\
+				./ex01		\
 
 all			:	
 				$(foreach dir,$(DIRS),$(MAKE) -C $(dir) all && ) true
