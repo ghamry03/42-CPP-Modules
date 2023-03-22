@@ -45,10 +45,10 @@ class $className {
     private:
 
     public:
-        $className( void );
-        ~$className( void );
-        $className( const $className & copy );
-        $className & operator=( const $className & copy );
+        $className(void);
+        ~$className(void);
+        $className(const $className & copy);
+        $className & operator=(const $className & copy);
 
 };
 
@@ -58,18 +58,18 @@ class $className {
 ### CPP FILE
 echo "#include \"$className.hpp\"
 
-$className::$className( void ) {
+$className::$className(void) {
 }
 
-$className::~$className( void ) {
+$className::~$className(void) {
 }
 
-$className::$className( const $className & copy ) {
+$className::$className(const $className & copy) {
     *this = copy;
 }
 
-$className & $className::operator=( const $className & copy ) {
-    return ( *this );
+$className & $className::operator=(const $className & copy) {
+    return (*this);
 }
 " >> $cppPath
 

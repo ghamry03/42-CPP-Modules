@@ -39,6 +39,11 @@ class Form {
             public:
                 virtual const char * what(void) const throw();
         };
+
+        class FormIsSignedException : public std::exception {
+            public:
+                virtual const char * what(void) const throw();
+        };
 };
 
 std::ostream & operator<<(std::ostream & stream, 

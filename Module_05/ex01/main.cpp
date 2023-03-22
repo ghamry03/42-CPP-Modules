@@ -3,7 +3,7 @@
 int main( void ) {
     {
         try {
-            Bureaucrat  test("Baty5a", 9);
+            Bureaucrat  test("Baty5a", 69);
             Form        form("Far5a", 70, 1);
 
             std::cout << std::endl;
@@ -18,11 +18,12 @@ int main( void ) {
             std::cout << std::endl;
 
             try {
-                test.signForm(form);
                 form.beSigned(test);
             } catch (std::exception & e) {
                 std::cout << e.what() << std::endl;
             }
+
+            test.signForm(form);
 
             std::cout << std::endl;
 
