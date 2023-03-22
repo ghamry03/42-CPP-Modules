@@ -82,6 +82,8 @@ std::ostream & operator<<(std::ostream & stream, const Form & form) {
 
     formState = form.getIsSigned() == true ? ", form is signed"
                                   : ", form is not signed yet";
-    stream << form.getName() << formState;
+    stream << form.getName() << formState << " - [sign grade : "
+        << form.getSignGrade() << " - exec grade "
+        << form.getExecGrade() << "]";
     return (stream);
 }

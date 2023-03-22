@@ -7,9 +7,11 @@ int main( void ) {
             Form        form("Far5a", 70, 1);
 
             std::cout << std::endl;
+            std::cout << test << std::endl;
+            std::cout << form << std::endl;
+            std::cout << std::endl;
 
-            try { 
-                std::cout << test << std::endl;
+            try { std::cout << test << std::endl;
                 test.decGrade();
             } catch (std::exception & e) {
                 std::cout << e.what() << std::endl;
