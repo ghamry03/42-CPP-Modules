@@ -61,6 +61,18 @@ void                Bureaucrat::signForm(AForm & form) const {
     }
 }                             
 
+void                Bureaucrat::executeForm(AForm & form) const {
+    try {
+        form.execute(*this);
+        std::cout << this->getName() << " executed "
+            << form.getName() << std::endl;
+    }
+    catch (std::exception & e) {
+        std::cout << this->getName() << " couldn't execute " << form.getName()
+            << " because [" << e.what() << "]." << std::endl;
+    }
+}
+
 const char *        Bureaucrat::GradeTooHighException::what(void) const throw() {
     return ("Error: Grade Too High");
 }

@@ -8,8 +8,8 @@ class AForm;
 
 class Bureaucrat {
     private:
-        const std::string                                 _name;
-        int                                              _grade;
+        const std::string                               _name;
+        int                                            _grade;
         void                             _setGrade(int grade);
 
     public:
@@ -24,7 +24,8 @@ class Bureaucrat {
 
         void                                   incGrade(void);
         void                                   decGrade(void);
-        void                      signForm(AForm & form) const;
+        void                     signForm(AForm & form) const;
+        void                  executeForm(AForm & form) const;
 
         class  GradeTooHighException : public std::exception {
             public:

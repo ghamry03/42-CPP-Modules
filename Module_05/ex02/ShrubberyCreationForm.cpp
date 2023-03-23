@@ -6,7 +6,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(void)
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string & target)
-    : AForm(target+ "_shrubbery", 145, 137) {
+    : AForm(target, 145, 137) {
     std::cout << "ShrubberyCreationForm defualt constructor is called" << std::endl;
 }
 
@@ -32,7 +32,7 @@ void    ShrubberyCreationForm::execute(const Bureaucrat & executor) {
         this->_checkGrade(executor.getGrade(), execGrade);
 
         std::ofstream   outFile;
-        outFile.open(this->getName());
+        outFile.open((this->getName()+ "_shrubbery").c_str());
         if (!outFile.is_open()) {
             std::cout << "Error: Failed to open file" << std::endl;
             return ;

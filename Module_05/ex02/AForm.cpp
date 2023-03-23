@@ -33,7 +33,6 @@ void                AForm::_checkGrade(int grade, gradeType type) {
     else if (grade > 150)
         throw AForm::GradeTooLowException();
     if (type == signGrade && grade > this->getSignGrade()) {
-        std::cout << "-------------" << _signGrade << "-" << grade << std::endl;
         throw AForm::GradeTooLowException();
     }
     else if (type == execGrade && grade > this->getExecGrade()) 

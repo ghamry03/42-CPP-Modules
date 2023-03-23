@@ -15,9 +15,10 @@ enum    gradeType {
 class AForm {
     protected:
         const std::string                               _name;
+        bool                                        _isSigned;
         const int                                  _signGrade;
         const int                                  _execGrade;
-        bool                                        _isSigned;
+
         void           _checkGrade(int grade, gradeType type);
 
     public:
