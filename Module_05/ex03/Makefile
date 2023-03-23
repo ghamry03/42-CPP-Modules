@@ -1,0 +1,31 @@
+NAME		=	Intern
+
+SRCS		=	main.cpp					\
+				Intern.cpp					\
+				Bureaucrat.cpp				\
+				AForm.cpp					\
+				ShrubberyCreationForm.cpp	\
+				RobotomyRequestForm.cpp		\
+				PresidentialPardonForm.cpp	\
+
+OBJS		=	$(SRCS:.cpp=.o)
+
+CXX			=	c++
+
+CXXFLAGS	=	-Wall -Werror -Wextra -Wconversion -std=c++98
+
+RM			=	rm -f
+
+$(NAME)		:	$(OBJS)
+				$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+
+all			:	$(NAME)
+
+clean		:
+				$(RM) $(OBJS)
+
+fclean		:	clean
+				$(RM) $(NAME)
+
+re			:	fclean all
+
