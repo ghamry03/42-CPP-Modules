@@ -4,6 +4,7 @@
 # include <iostream>
 # include <limits>
 # include <cstdlib>
+# include <cerrno>
 
 enum inputType {
     normal,
@@ -19,8 +20,9 @@ class ScalarConverter {
                                                          ~ScalarConverter(void);
                       ScalarConverter & operator=(const ScalarConverter & copy);
 
-                     static    bool                                   _isDouble;
+                     static    bool                                       _hasE;
                      static    bool                                  _hasQuotes;
+                     static    bool                                   _isDouble;
                      static    inputType                             _inputType;
 
                      static    bool      checkQuotes(const std::string & input);
@@ -38,6 +40,11 @@ class ScalarConverter {
                      static    bool  printAllConversions(
                                                      const std::string & input);
 
+                     class  ImpossiblePrintException: public std::exception {
+                         public:
+                                virtual const char * what( void ) const throw();
+                     };
+
                      class  OpenQuotesException: public std::exception {
                          public:
                                 virtual const char * what( void ) const throw();
@@ -53,7 +60,7 @@ class ScalarConverter {
                                 virtual const char * what( void ) const throw();
                      };
 
-                     class  IntLimitException : public std::exception {
+                     class  NumberNotInRangeException : public std::exception {
                          public:
                                 virtual const char * what( void ) const throw();
                      };

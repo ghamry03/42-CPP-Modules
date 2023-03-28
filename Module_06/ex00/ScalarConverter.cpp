@@ -1,8 +1,10 @@
 #include "ScalarConverter.hpp"
+#include <cctype>
 #include <limits>
 
 bool ScalarConverter::_isDouble = false;
 bool ScalarConverter::_hasQuotes = false;
+bool ScalarConverter::_hasE = false;
 inputType ScalarConverter::_inputType = normal;
 
 ScalarConverter::ScalarConverter(void) {
@@ -38,9 +40,22 @@ bool    ScalarConverter::checkQuotes(const std::string & input) {
 }
 
 bool    ScalarConverter::parseNumber(const std::string & input) {
+    std::string numTypes[2][3] = {{"-inf", "+inf", "nan"},
+                                {"-inff", "+inff", "nanf"}};
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (input == numTypes[i][j]) {
+                ScalarConverter::_inputType = static_cast<inputType>(j + 1);
+                ScalarConverter::_isDouble = true;
+                return (true);
+            }
+        }
+    }
+
     size_t  found = input.find_last_of("+-");
-    if (found != std::string::npos && found != 0)
+    if (found != std::string::npos && found != 0 && input[found - 1] != 'e')
         throw ScalarConverter::InputIsNotDigit();
+
 
     found = input.find('f');
     if (found != std::string::npos && found != input.length() - 1)
@@ -52,8 +67,17 @@ bool    ScalarConverter::parseNumber(const std::string & input) {
         throw ScalarConverter::InputIsNotDigit();
     if (foundFirst != std::string::npos && input[foundFirst + 1])
         ScalarConverter::_isDouble = true;
+    
+    foundFirst = input.find_first_of('e');
+    foundLast = input.find_last_of('e');
+    std::string allowedCharForE = "0123456789+-";
+    if (foundFirst != foundLast
+        || allowedCharForE.find(input[foundLast + 1]) == std::string::npos)
+        throw ScalarConverter::InputIsNotDigit();
+    if (foundFirst != std::string::npos)
+        ScalarConverter::_hasE = true;
 
-    found = input.find_first_not_of("0123456789.+-f");
+    found = input.find_first_not_of("0123456789e.+-f");
     if (found != std::string::npos)
         throw ScalarConverter::InputIsNotDigit();
 
@@ -63,6 +87,12 @@ bool    ScalarConverter::parseNumber(const std::string & input) {
 
 char    ScalarConverter::convertToChar(const std::string & input) {
     char ret;
+
+    if (ScalarConverter::_inputType != normal)
+        throw ScalarConverter::ImpossiblePrintException();
+
+    if (ScalarConverter::_isDouble)
+        throw ScalarConverter::InvalidCharException();
 
     std::string cleanedInput = input; 
     if (ScalarConverter::_hasQuotes) {
@@ -87,6 +117,9 @@ int     ScalarConverter::convertToInt(const std::string & input) {
     size_t      findDot;
     long        num;
 
+    if (ScalarConverter::_inputType != normal)
+        throw ScalarConverter::ImpossiblePrintException();
+
     std::string cleanedInput = input; 
     if (ScalarConverter::_hasQuotes)
         cleanedInput = input.substr(1, input.length() - 2);
@@ -96,24 +129,22 @@ int     ScalarConverter::convertToInt(const std::string & input) {
     findDot = cleanedInput.find(".");
     if (findDot == std::string::npos) {
         if (input.length() > 11)
-            throw ScalarConverter::IntLimitException();
+            throw ScalarConverter::NumberNotInRangeException();
     }
     else if (findDot > 11)
-        throw ScalarConverter::IntLimitException();
+        throw ScalarConverter::NumberNotInRangeException();
 
     num = atol(cleanedInput.c_str());
     if (num > std::numeric_limits<int>::max() || num < std::numeric_limits<int>::min())
-        throw ScalarConverter::IntLimitException();
+        throw ScalarConverter::NumberNotInRangeException();
     return (static_cast<int>(num));
 }
 
 float   ScalarConverter::convertToFloat(const std::string & input) {
-    std::string cleanedInput = input; 
-    if (ScalarConverter::_hasQuotes)
-        cleanedInput = input.substr(1, input.length() - 2);
-        
-    ScalarConverter::parseNumber(cleanedInput);
-    return (static_cast<float>(std::atof(cleanedInput.c_str())));
+    double num = convertToDouble(input);
+    if (num > std::numeric_limits<float>::max() || num < std::numeric_limits<float>::min())
+        throw ScalarConverter::NumberNotInRangeException();
+    return (static_cast<float>(num));
 }
 
 double  ScalarConverter::convertToDouble(const std::string & input) {
@@ -122,7 +153,13 @@ double  ScalarConverter::convertToDouble(const std::string & input) {
         cleanedInput = input.substr(1, input.length() - 2);
         
     ScalarConverter::parseNumber(cleanedInput);
-    return (static_cast<double>(std::atof(cleanedInput.c_str())));
+    char **end = NULL;
+    errno = 0;
+    double ret = std::strtod(input.c_str(), end);
+    if (errno)
+        throw ScalarConverter::NumberNotInRangeException();
+
+    return (ret);
 }
 
 bool    ScalarConverter::printChar(const std::string & input) {
@@ -151,8 +188,9 @@ bool    ScalarConverter::printInt(const std::string & input) {
 bool    ScalarConverter::printFloat(const std::string & input) {
     try {
         std::cout << "float:\t";
-        std::cout << ScalarConverter::convertToFloat(input);
-        if (!ScalarConverter::_isDouble)
+        double num = ScalarConverter::convertToFloat(input);
+        std::cout << num;
+        if (!ScalarConverter::_isDouble && num == static_cast<int>(num))
             std::cout << ".0";
         std::cout << "f" << std::endl;
     } catch (std::exception & e) {
@@ -165,8 +203,9 @@ bool    ScalarConverter::printFloat(const std::string & input) {
 bool    ScalarConverter::printDouble(const std::string & input) {
     try {
         std::cout << "double:\t";
-        std::cout << ScalarConverter::convertToDouble(input);
-        if (!ScalarConverter::_isDouble)
+        double num = ScalarConverter::convertToDouble(input);
+        std::cout << num;
+        if (!ScalarConverter::_isDouble && num == static_cast<int>(num))
             std::cout << ".0";
         std::cout << std::endl;
     } catch (std::exception & e) {
@@ -177,18 +216,24 @@ bool    ScalarConverter::printDouble(const std::string & input) {
 }
 
 bool    ScalarConverter::printAllConversions(const std::string & input) {
-    std::cout << _inputType << std::endl;
     try {
         ScalarConverter::checkQuotes(input);
     } catch (std::exception & e) {
         std::cout << "Invalid input: "<< e.what() << std::endl;
         return (false);
     }
+    try {
+        ScalarConverter::parseNumber(input);
+    } catch (std::exception & e) {}
     ScalarConverter::printChar(input);
     ScalarConverter::printInt(input);
     ScalarConverter::printFloat(input);
     ScalarConverter::printDouble(input);
    return (true);
+}
+
+const char * ScalarConverter::ImpossiblePrintException::what( void ) const throw() {
+    return ("[impossible]");   
 }
 
 const char * ScalarConverter::OpenQuotesException::what( void ) const throw() {
@@ -203,8 +248,8 @@ const char * ScalarConverter::NonPrintableCharException::what( void ) const thro
     return ("[Non displayable]");   
 }
 
-const char * ScalarConverter::IntLimitException::what( void ) const throw() {
-    return ("[Number is outside Int range]");   
+const char * ScalarConverter::NumberNotInRangeException::what( void ) const throw() {
+    return ("[Number is outside the range]");   
 }
 
 const char * ScalarConverter::InputIsNotDigit::what( void ) const throw() {
