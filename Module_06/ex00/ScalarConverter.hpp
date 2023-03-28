@@ -2,7 +2,7 @@
 # define SCALARCONVERTER_HPP
 
 # include <iostream>
-# include <climits>
+# include <limits>
 # include <cstdlib>
 
 enum inputType {

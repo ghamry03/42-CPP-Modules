@@ -1,4 +1,5 @@
 #include "ScalarConverter.hpp"
+#include <limits>
 
 bool ScalarConverter::_isDouble = false;
 bool ScalarConverter::_hasQuotes = false;
@@ -121,7 +122,7 @@ double  ScalarConverter::convertToDouble(const std::string & input) {
         cleanedInput = input.substr(1, input.length() - 2);
         
     ScalarConverter::parseNumber(cleanedInput);
-    return (static_cast<double>(std::stod(cleanedInput)));
+    return (static_cast<double>(std::atof(cleanedInput.c_str())));
 }
 
 bool    ScalarConverter::printChar(const std::string & input) {
