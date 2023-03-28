@@ -6,7 +6,7 @@
 # include <cstdlib>
 # include <cerrno>
 
-enum inputType {
+enum numType {
     normal,
     negInf,
     posInf,
@@ -20,12 +20,13 @@ class ScalarConverter {
                                                          ~ScalarConverter(void);
                       ScalarConverter & operator=(const ScalarConverter & copy);
 
-                     static    bool                                       _hasE;
                      static    bool                                  _hasQuotes;
-                     static    bool                                   _isDouble;
-                     static    inputType                             _inputType;
+                     static    numType                                 _numType;
 
+                     static    void        checkType(const std::string & input);
                      static    bool      checkQuotes(const std::string & input);
+                     static    bool      checkForDup(const std::string & input);
+                     static    bool    checkExponent(const std::string & input);
                      static    bool      parseNumber(const std::string & input);
 
     public:
