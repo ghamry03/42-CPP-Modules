@@ -2,7 +2,8 @@
 #include "iter.hpp"
 
 void    ft_toUpper( char & c ) {
-    c = c >= 'a' && c <= 'z' ? c -= 32 : c;
+    if ( c >= 'a' && c <='z' )
+        c -= 32;
 }
 
 void    ft_checkNum( int & num ) {
