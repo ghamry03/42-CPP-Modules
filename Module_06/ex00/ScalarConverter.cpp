@@ -25,7 +25,7 @@ ScalarConverter & ScalarConverter::operator=(const ScalarConverter & copy) {
 }
 
 void    ScalarConverter::checkType(const std::string & input) {
-    std::string numTypes[2][3] = {{"-inf", "+inf", "nan"},
+    const std::string numTypes[2][3] = {{"-inf", "+inf", "nan"},
                                 {"-inff", "+inff", "nanf"}};
     for (int i = 0; i < 2; i++) {
         for (int j = 0; j < 3; j++) {
@@ -47,7 +47,7 @@ bool    ScalarConverter::checkQuotes(const std::string & input) {
 }
 
 bool    ScalarConverter::checkForDup(const std::string & input) {
-    std::string dupChar = ".eE";
+    const std::string dupChar = ".eE";
 
     for (size_t i = 0; i < dupChar.length(); i++) {
         size_t foundFirst = input.find_first_of(dupChar[i]);
@@ -60,8 +60,8 @@ bool    ScalarConverter::checkForDup(const std::string & input) {
 
 bool    ScalarConverter::checkExponent(const std::string & input) {
     bool foundExponent = false;
-    std::string exponentVar = "eE";
-    std::string exponentAllowedChar= "0123456789+-";
+    const std::string exponentVar = "eE";
+    const std::string exponentAllowedChar= "0123456789+-";
 
     for (size_t i = 0; i < exponentVar.length(); i++) {
         size_t foundFirst = input.find_first_of(exponentVar[i]);
@@ -86,7 +86,6 @@ bool    ScalarConverter::parseNumber(const std::string & input) {
     size_t  found = input.find_last_of("+-");
     if (found != std::string::npos && found != 0 && input[found - 1] != 'e')
         throw ScalarConverter::InputIsNotDigit();
-
 
     found = input.find('f');
     if (found != std::string::npos && found != input.length() - 1)
