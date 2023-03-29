@@ -1,4 +1,4 @@
-NAME		=	Template
+NAME		=	whatever
 
 SRCS		=	main.cpp			\
 
