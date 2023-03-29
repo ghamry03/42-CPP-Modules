@@ -2,6 +2,7 @@
 # define SERIALIZER_HPP
 
 # include <iostream>
+# include <stdint.h>
 
 typedef struct Data {
     int         id;
@@ -18,7 +19,7 @@ class Serializer {
 
     public:
                                 static  uintptr_t          serialize(Data * ptr);
-                                static  Data *   deserialize(std::uintptr_t raw);
+                                static  Data *        deserialize(uintptr_t raw);
 };
 
 #endif
