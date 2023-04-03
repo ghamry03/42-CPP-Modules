@@ -47,9 +47,16 @@ int     Span::shortestSpan( void ) {
     if ( this->_nums.size() < 2 )
         throw NotEnoughElementsException();
 
-    std::vector< int >::iterator min = std::min_element( _nums.begin(), _nums.end() );
-    std::vector< int >::iterator max = std::max_element( _nums.begin(), _nums.end() );
-    return ( *max - *min );
+    std::vector< int > sortedNums = this->_nums;
+    std::sort( sortedNums.begin(), sortedNums.end() );
+
+    std::vector< int >::iterator it = sortedNums.begin() + 1;
+    int lowestSpan = *( it + 1 ) - *it;
+    for ( ; it != sortedNums.end(); *it++ ) {
+        if ( *it - *(it - 1) < lowestSpan )
+            lowestSpan = *it - *( it - 1 );
+    }
+    return ( lowestSpan );
 }
 
 int     Span::longestSpan( void ) {
@@ -61,10 +68,29 @@ int     Span::longestSpan( void ) {
     return ( *max - *min );
 }
 
+void    Span::AddRandomNumbers( int num ) {
+    srand( static_cast< unsigned int >( time(NULL) ));
+    for ( int i = 0; i < num; i++ ) {
+        this->addNumber( rand() % static_cast< int >( this->max() ) );
+    }
+}
+
+void    Span::AddIterNumbers( const std::vector< int >::iterator begin,
+    const std::vector< int >::iterator end ) {
+    std::vector< int >::iterator tmp = begin;
+
+    for ( ; tmp != end; *tmp++ )
+        this->addNumber( *tmp );
+}
+
+unsigned int Span::max( void ) const {
+    return ( this->_max );
+}
+
 const char * Span::MaxElementsException::what( void ) const throw() {
-    return ( "Span reached maximum amount of elements" );
+    return ( "[Span reached maximum amount of elements]" );
 }
 
 const char * Span::NotEnoughElementsException::what( void ) const throw() {
-    return ( "Span doesn't have enough elements" );
+    return ( "[Span doesn't have enough elements]" );
 }

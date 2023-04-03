@@ -24,6 +24,11 @@ class Span {
         void    addNumber( int num );
         int     shortestSpan( void );
         int     longestSpan( void );
+        void    AddRandomNumbers( int num );
+        void    AddIterNumbers( const std::vector< int >::iterator begin,
+                                const std::vector< int >::iterator end );
+
+        unsigned int max( void ) const;
 
         class MaxElementsException : public std::exception {
             const char * what( void ) const throw();
