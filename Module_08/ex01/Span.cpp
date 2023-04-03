@@ -2,10 +2,12 @@
 
 Span::Span( void ) : _max( 0 ) {
     std::cout << "Span default constructor is called" << std::endl;
+    srand( static_cast< unsigned int >( time(NULL) ));
 }
 
 Span::Span( unsigned int max ) : _max( max ) {
     std::cout << "Span constructor is called" << std::endl;
+    srand( static_cast< unsigned int >( time(NULL) ));
 }
 
 Span::~Span( void ) {
@@ -69,7 +71,6 @@ int     Span::longestSpan( void ) {
 }
 
 void    Span::AddRandomNumbers( int num ) {
-    srand( static_cast< unsigned int >( time(NULL) ));
     for ( int i = 0; i < num; i++ ) {
         this->addNumber( rand() % static_cast< int >( this->max() ) );
     }
