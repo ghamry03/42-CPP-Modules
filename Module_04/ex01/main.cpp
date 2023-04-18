@@ -7,10 +7,10 @@ int main(void)
     {
         const Animal* j = new Dog();
         const Animal* i = new Cat();
-        delete j;//should not create a leak
+        i->makeSound();
+        j->makeSound();
+        delete j;
         delete i;
-    }
-    {
     }
     return 0;
 }

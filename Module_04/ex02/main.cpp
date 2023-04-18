@@ -8,7 +8,9 @@ int main(void)
     {
         const AAnimal* j = new Dog();
         const AAnimal* i = new Cat();
-        delete j;//should not create a leak
+        i->makeSound();
+        j->makeSound();
+        delete j;
         delete i;
     }
     return 0;
