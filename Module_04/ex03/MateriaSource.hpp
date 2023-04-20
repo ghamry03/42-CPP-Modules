@@ -6,17 +6,18 @@
 
 class MateriaSource : public IMateriaSource {
     private:
-        int        _materialsCount;
-        AMateria * _materials[4];
+        int        _materiaCount;
+        AMateria * _items[4];
 
     public:
-        MateriaSource( void );
-        ~MateriaSource( void );
-        MateriaSource( MateriaSource const & copy );
-        MateriaSource & operator=( MateriaSource const & copy );
+        MateriaSource(void);
+        ~MateriaSource(void);
+        MateriaSource(const MateriaSource & copy);
+        MateriaSource & operator=(const MateriaSource & copy);
 
         void       learnMateria( AMateria * m );
         AMateria * createMateria( std::string const & type );
 };
 
 #endif
+
