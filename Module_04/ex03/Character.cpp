@@ -48,7 +48,7 @@ void Character::equip( AMateria * m ) {
     for ( int i = 0; i < 4; i++ ) {
         if ( _isEquiped[i] == false ) {
             std::cout << "Character " << this->getName() << " equiped item "
-                << m->getType() << " at slot " << i << std::endl;
+                << m->getType() << " at index " << i << std::endl;
             if ( _items[i] )
                 delete _items[i];
             _items[i] = m->clone();
@@ -66,6 +66,8 @@ void Character::unequip( int idx ) {
         std::cout << "Character " << this->getName()
             << " doesn't have an item at index" << idx << std::endl;
     else {
+        std::cout << "Character " << this->getName()
+            << " dropped an item at index " << idx << std::endl;
         _isEquiped[idx] = false;
         _materiaCount--;
     }
