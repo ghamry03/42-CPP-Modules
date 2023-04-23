@@ -41,6 +41,11 @@ std::string const & Character::getName( void ) const {
 }
 
 void Character::equip( AMateria * m ) {
+    if ( !m ) {
+        std::cout << "Character " <<
+            this->getName() << " Can't equip Materia" << std::endl;
+        return ;
+    }
     if ( _materiaCount == 4 ) {
         std::cout << "Character " << this->getName() << " inventory is full" << std::endl;
         return ;

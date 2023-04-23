@@ -39,6 +39,6 @@ AMateria * MateriaSource::createMateria( std::string const & type ) {
         if ( _items[i] && _items[i]->getType() == type )
             return ( this->_items[i] );
     }
-    std::cout << "Material Source can't find" << type << std::endl;
+    std::cout << "Material Source can't find " << type << std::endl;
     return (NULL);
 }
