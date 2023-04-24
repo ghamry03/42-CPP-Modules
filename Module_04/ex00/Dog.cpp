@@ -13,7 +13,7 @@ Dog::~Dog( void ) {
 }
 
 Dog::Dog( Dog const & copy ) : Animal(copy) {
-    std::cout << "Cat copy constructor is called" << std::endl;
+    std::cout << "Dog copy constructor is called" << std::endl;
     *this = copy;
 }
 

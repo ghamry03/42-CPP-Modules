@@ -6,10 +6,10 @@
 class AAnimal {
     protected:
         std::string _type;
+        AAnimal( std::string const & type );
 
     public:
         AAnimal( void );
-        AAnimal( std::string const & type );
         virtual ~AAnimal( void );
         AAnimal( AAnimal const & copy );
         AAnimal & operator=( AAnimal const & copy );

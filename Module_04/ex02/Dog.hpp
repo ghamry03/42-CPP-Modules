@@ -8,10 +8,10 @@
 class Dog : public AAnimal {
     private:
         Brain * _brain;
+        Dog( std::string const & AAnimal );
 
     public:
         Dog( void );
-        Dog( std::string const & AAnimal );
         ~Dog( void );
         Dog( Dog const & copy );
         Dog & operator=( Dog const & copy );

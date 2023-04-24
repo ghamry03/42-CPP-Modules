@@ -5,9 +5,11 @@
 # include "WrongAnimal.hpp"
 
 class WrongCat : public WrongAnimal {
+    private:
+        WrongCat( std::string const & type );
+
     public:
         WrongCat( void );
-        WrongCat( std::string const & type );
         ~WrongCat( void );
         WrongCat( WrongCat const & copy );
         WrongCat & operator=( WrongCat const & copy );

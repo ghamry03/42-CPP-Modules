@@ -6,10 +6,10 @@
 class WrongAnimal {
     protected:
         std::string _type;
+        WrongAnimal( std::string const & type );
 
     public:
         WrongAnimal( void );
-        WrongAnimal( std::string const & type );
         virtual ~WrongAnimal( void );
         WrongAnimal( WrongAnimal const & copy );
         WrongAnimal & operator=( WrongAnimal const & copy );

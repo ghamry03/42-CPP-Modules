@@ -30,7 +30,7 @@ void    MateriaSource::learnMateria( AMateria * m ) {
         return ;
     }
     std::cout << "Materia Source learned new materia " << m->getType() << std::endl;
-    _items[ _materiaCount ] = m;
+    _items[ _materiaCount ] = m->clone();
     _materiaCount++;
 }
 

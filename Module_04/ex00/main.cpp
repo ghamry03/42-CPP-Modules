@@ -27,6 +27,7 @@ int main(void)
     delete meta;
     delete i;
     delete j;
+    delete x;
 
     return 0;
 }

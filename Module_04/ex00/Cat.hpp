@@ -5,9 +5,11 @@
 # include "Animal.hpp"
 
 class Cat : public Animal {
+    private:
+        Cat( std::string const & type );
+
     public:
         Cat( void );
-        Cat( std::string const & type );
         ~Cat( void );
         Cat( Cat const & copy );
         Cat & operator=( Cat const & copy );

@@ -27,8 +27,7 @@ Character::Character( const Character & copy ) : _name( copy.getName() ), _mater
 
 Character & Character::operator=( const Character & copy ) {
     for ( int i = 0; i < 4; i++ ) {
-        if ( _items[i] )
-            _items[i] = copy._items[i]->clone();
+        _items[i] = copy._items[i]->clone();
         _isEquiped[i] = copy._isEquiped[i];
     }
     _name = copy.getName();
@@ -83,7 +82,7 @@ void Character::use( int idx, ICharacter & target ) {
         std::cout << "Error: invalid index" << std::endl;
     else if ( _isEquiped[idx] == false )
         std::cout << "Character " << this->getName()
-            << " doesn't have an item at index" << idx << std::endl;
+            << " doesn't have an item at index " << idx << std::endl;
     else
         _items[idx]->use( target );
 }
