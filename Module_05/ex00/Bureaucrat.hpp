@@ -13,7 +13,7 @@ class Bureaucrat {
                                              Bureaucrat( void );
                                             ~Bureaucrat( void );
                           Bureaucrat( const Bureaucrat & copy );
-                      Bureaucrat( std::string name, int grade );
+      Bureaucrat( std::string const & name, int const & grade );
         Bureaucrat &       operator=( const Bureaucrat & copy );
 
         int                              getGrade( void ) const;

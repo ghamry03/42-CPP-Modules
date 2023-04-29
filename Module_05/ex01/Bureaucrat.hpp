@@ -8,15 +8,15 @@ class Form;
 
 class Bureaucrat {
     private:
-        const std::string                                 _name;
-        int                                              _grade;
+        const std::string                               _name;
+        int                                            _grade;
         void                             _setGrade(int grade);
 
     public:
                                              Bureaucrat(void);
                                             ~Bureaucrat(void);
                           Bureaucrat(const Bureaucrat & copy);
-                      Bureaucrat(std::string name, int grade);
+      Bureaucrat(std::string const & name, int const & grade);
         Bureaucrat &       operator=(const Bureaucrat & copy);
 
         int                              getGrade(void) const;

@@ -13,17 +13,18 @@ enum    gradeType {
 };
 
 class AForm {
-    protected:
+    private:
         const std::string                               _name;
-        bool _isSigned;
+        bool                                        _isSigned;
         const int                                  _signGrade;
         const int                                  _execGrade;
 
+    protected:
         void           _checkGrade(int grade, gradeType type);
 
     public:
                                                   AForm(void);
-                                                 ~AForm(void);
+                                         virtual ~AForm(void);
                 AForm(const std::string & name, int signGrade,
                                                int execGrade);
                                     AForm(const AForm & copy);

@@ -1,5 +1,4 @@
 #include "RobotomyRequestForm.hpp"
-#include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm(void)
     : AForm("default_shrubbery", 72, 45) {
@@ -22,7 +21,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm & copy) : AFo
 
 RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm & copy) {
     std::cout << "RobotomyRequestForm copy assignment operator is called" << std::endl;
-    this->_isSigned = copy._isSigned;
+    AForm::operator=( copy );
     return (*this);
 }
 

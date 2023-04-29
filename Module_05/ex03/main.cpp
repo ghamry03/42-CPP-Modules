@@ -27,4 +27,8 @@ int main(void) {
     presidential->execute(boss);
 
     std::cout << std::endl << std::endl;
+
+    delete shrubbery;
+    delete robotomy;
+    delete presidential;
 }

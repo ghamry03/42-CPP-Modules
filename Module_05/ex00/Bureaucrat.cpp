@@ -4,7 +4,7 @@ Bureaucrat::Bureaucrat( void ) : _name( "default" ), _grade( 1 ) {
     std::cout << "Bureaucrat defualt constructor is called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat( std::string name, int grade ) : _name( name ) {
+Bureaucrat::Bureaucrat( std::string  const & name, int const & grade ) : _name( name ) {
     std::cout << "Bureaucrat constructor is called" << std::endl;
     _setGrade( grade );
 }
@@ -33,13 +33,9 @@ void                Bureaucrat::_setGrade( int grade ) {
         this->_grade = grade;
 }
 
-int                 Bureaucrat::getGrade( void ) const {
-    return ( this->_grade );
-}
+int                 Bureaucrat::getGrade( void ) const { return ( this->_grade ); }
 
-const std::string   Bureaucrat::getName( void ) const {
-    return ( this->_name );
-}
+const std::string   Bureaucrat::getName( void ) const { return ( this->_name ); }
 
 void                Bureaucrat::incGrade( void ) {
     this->_setGrade( this->getGrade() - 1 );

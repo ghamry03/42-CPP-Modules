@@ -21,7 +21,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm & co
 
 PresidentialPardonForm & PresidentialPardonForm::operator=(const PresidentialPardonForm & copy) {
     std::cout << "PresidentialPardonForm copy assignment operator is called" << std::endl;
-    this->_isSigned = copy._isSigned;
+    AForm::operator=( copy );
     return (*this);
 }
 

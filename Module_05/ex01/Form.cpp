@@ -42,11 +42,10 @@ void                Form::beSigned(const Bureaucrat & bureaucrat) {
 
     if (bureaucrat.getGrade() > this->getSignGrade()) 
         throw Form::GradeTooLowException();
-    else {
-        std::cout << bureaucrat.getName() << " signed form "
-            << this->getName() << std::endl;
-        this->_isSigned = true;
-    }
+
+    std::cout << bureaucrat.getName() << " signed form "
+        << this->getName() << std::endl;
+    this->_isSigned = true;
 }
 
 const std::string   Form::getName(void) const {
