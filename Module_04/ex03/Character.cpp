@@ -27,6 +27,8 @@ Character::Character( const Character & copy ) : _name( copy.getName() ), _mater
 
 Character & Character::operator=( const Character & copy ) {
     for ( int i = 0; i < 4; i++ ) {
+        if ( _items[i] )
+            delete _items[i];
         _items[i] = copy._items[i]->clone();
         _isEquiped[i] = copy._isEquiped[i];
     }

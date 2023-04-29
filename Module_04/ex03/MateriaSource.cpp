@@ -18,7 +18,8 @@ MateriaSource::MateriaSource( const MateriaSource & copy ) {
 MateriaSource & MateriaSource::operator=( const MateriaSource & copy ) {
     for ( int i = 0; i < 4; i++ ) {
         if ( _items[i] )
-            _items[i] = copy._items[i]->clone();
+            delete _items[i];
+        _items[i] = copy._items[i]->clone();
     }
     _materiaCount = copy._materiaCount;
     return ( *this );
