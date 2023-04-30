@@ -1,6 +1,4 @@
 #include "ScalarConverter.hpp"
-#include <cctype>
-#include <limits>
 
 bool ScalarConverter::_hasQuotes = false;
 numType ScalarConverter::_numType = normal;
@@ -43,6 +41,7 @@ bool    ScalarConverter::checkQuotes(const std::string & input) {
     
     if (foundFirst != 0 || foundSecond != input.length() - 1)
             throw ScalarConverter::OpenQuotesException();
+    ScalarConverter::_hasQuotes = true;
     return (ScalarConverter::_hasQuotes);
 }
 
@@ -156,7 +155,8 @@ int     ScalarConverter::convertToInt(const std::string & input) {
 
 float   ScalarConverter::convertToFloat(const std::string & input) {
     double num = convertToDouble(input);
-    if (num > std::numeric_limits<float>::max() || num < std::numeric_limits<float>::min())
+    if ((num > std::numeric_limits<float>::max() || num < std::numeric_limits<float>::min())
+            && _numType == normal)
         throw ScalarConverter::NumberNotInRangeException();
     return (static_cast<float>(num));
 }

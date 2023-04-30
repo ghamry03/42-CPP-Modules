@@ -8,7 +8,7 @@ int main(void) {
     std::cout << hamada->id;
 
     uintptr_t test = Serializer::serialize(hamada);
-    std::cout << "what are u?" << test << std::endl;
+    std::cout << "what are u? " << test << std::endl;
 
     Data * hamdy = Serializer::deserialize(test);
     std::cout << "mr hamdy: " << hamdy->name << std::endl;

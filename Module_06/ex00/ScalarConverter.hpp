@@ -10,7 +10,7 @@ enum numType {
     normal,
     negInf,
     posInf,
-    nan
+    nann
 };
 
 class ScalarConverter {
