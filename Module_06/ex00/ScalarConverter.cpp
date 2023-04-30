@@ -168,7 +168,7 @@ double  ScalarConverter::convertToDouble(const std::string & input) {
         
     ScalarConverter::parseNumber(cleanedInput);
     errno = 0;
-    double ret = std::strtod(input.c_str(), NULL);
+    double ret = std::strtod(cleanedInput.c_str(), NULL);
     if (errno)
         throw ScalarConverter::NumberNotInRangeException();
 
