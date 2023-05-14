@@ -1,12 +1,7 @@
 #include <cctype>
 #include "iter.hpp"
 
-void    ft_toUpper( char & c ) {
-    if ( c >= 'a' && c <='z' )
-        c -= 32;
-}
-
-void    ft_checkNum( int & num ) {
+void    ft_checkNum( int const & num ) {
     if ( num % 2 == 0 )
         std::cout << num << " is even" << std::endl;
     else
@@ -14,18 +9,7 @@ void    ft_checkNum( int & num ) {
 }
 
 int main(void) {
-    // std::string test = "abcdef";
-    // iter( test.c_str(), test.length(), &ft_toUpper );
-
-    char test1[4] = "abc";
-    std::cout << "Before: " << test1 << std::endl;
-    iter( test1, 2, &ft_toUpper );
-    std::cout << "After: " << test1 << std::endl;
-
     std::cout << std::endl << std::endl;
-    int test2[4] = { 69, 420, 360, -123 };
-    iter( test2, 4, &ft_checkNum );
-
-    std::cout << std::endl << "printInputEndl" << std::endl;
-    iter( test1, 3, &printInputEndl );
+    int test[4] = { 69, 420, 360, -123 };
+    iter( test, 4, &ft_checkNum );
 }
