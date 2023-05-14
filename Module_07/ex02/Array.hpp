@@ -53,6 +53,12 @@ class Array {
             return ( this->_array[idx] );
         }
 
+        T const & operator[]( unsigned int idx ) const {
+            if ( idx >= _size )
+                throw InvalidIndexException();
+            return ( this->_array[idx] );
+        }
+
         unsigned int size( void ) const {
             return ( this->_size );
         }
