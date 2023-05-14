@@ -1,11 +1,11 @@
 #include "Span.hpp"
 
-Span::Span( void ) : _max( 0 ) {
+Span::Span( void ) : _max( 0 ), _count( 0 ) {
     std::cout << "Span default constructor is called" << std::endl;
     srand( static_cast< unsigned int >( time(NULL) ));
 }
 
-Span::Span( unsigned int max ) : _max( max ) {
+Span::Span( unsigned int max ) : _max( max ), _count( 0 ) {
     std::cout << "Span constructor is called" << std::endl;
     srand( static_cast< unsigned int >( time(NULL) ));
 }
@@ -43,17 +43,18 @@ void    Span::addNumber( int num ) {
     if ( this->_nums.size() == this->_max ) 
         throw MaxElementsException();
     this->_nums.push_back( num );
+    _count++;
 }
 
 int     Span::shortestSpan( void ) {
-    if ( this->_nums.size() < 2 )
+    if ( _count < 2 )
         throw NotEnoughElementsException();
 
     std::vector< int > sortedNums = this->_nums;
     std::sort( sortedNums.begin(), sortedNums.end() );
 
     std::vector< int >::iterator it = sortedNums.begin() + 1;
-    int lowestSpan = *( it + 1 ) - *it;
+    int lowestSpan = *it - *(it - 1);
     for ( ; it != sortedNums.end(); *it++ ) {
         if ( *it - *(it - 1) < lowestSpan )
             lowestSpan = *it - *( it - 1 );
@@ -62,7 +63,7 @@ int     Span::shortestSpan( void ) {
 }
 
 int     Span::longestSpan( void ) {
-    if ( this->_nums.size() < 2 )
+    if ( _count < 2 )
         throw NotEnoughElementsException();
 
     std::vector< int >::iterator min = std::min_element( _nums.begin(), _nums.end() );

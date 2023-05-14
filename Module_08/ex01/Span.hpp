@@ -10,6 +10,7 @@
 class Span {
     private:
         unsigned int        _max;
+        unsigned int      _count;
         std::vector< int > _nums;
         
 
