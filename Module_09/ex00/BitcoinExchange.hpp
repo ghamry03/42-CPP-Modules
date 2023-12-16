@@ -4,6 +4,10 @@
 # include <map>
 # include <cstdlib>
 # include <fstream>
+# include <cerrno>
+# include <limits>
+# include <string>
+# include <iomanip>
 
 # define DATA_FILE "./data.csv"
 # define DATE_FORMAT "%d-%d-%d"
