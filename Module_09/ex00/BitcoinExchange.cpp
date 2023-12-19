@@ -126,8 +126,8 @@ float   BitcoinExchange::toFloat(const std::string& num) const {
         throw (std::runtime_error("invalid number syntax"));
     errno = 0;
     double n = std::strtod(num.c_str(), NULL);
-    if (errno || (n > std::numeric_limits<float>::max()
-        && n < std::numeric_limits<float>::min()))
+    if (errno || n > std::numeric_limits<float>::max()
+        || n < std::numeric_limits<float>::min())
         throw (std::runtime_error("too large a number. " + num));
     return (static_cast<float>(n));
 }

@@ -1,9 +1,12 @@
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
 
-# include <iostream>
-# include <deque>
-# include <list>
+#include <iostream>
+#include <deque>
+#include <vector>
+#include <stdlib.h>
+#include <limits>
+#include <algorithm>
 
 typedef std::pair<int, int> ii_pair;
 

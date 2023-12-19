@@ -1,5 +1,4 @@
 #include "PmergeMe.hpp"
-#include <cstddef>
 
 PmergeMe::PmergeMe(void) : _error(true) {}
 

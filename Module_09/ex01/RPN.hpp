@@ -3,13 +3,18 @@
 #include <iostream>
 #include <stack>
 #include <list>
+#include <stdlib.h>
+#include <sstream>
+#include <cerrno>
+#include <limits>
 
 class RPN {
 private:
-    std::stack< ssize_t, std::list<ssize_t> > _nums;
+    std::stack< double, std::list<double> > _nums;
 
     bool validateInput(const std::string& input);
-    void doOperation(char c);
+    bool addNumber(const std::string& s);
+    bool doOperation(const std::string& op);
 
 public:
     RPN(void);
